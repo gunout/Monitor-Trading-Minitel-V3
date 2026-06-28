@@ -1,5 +1,3 @@
-<img width="1394" height="1898" alt="Screenshot 2026-06-28 at 14-24-54 📊 TRADING MONITOR - Indicateurs IA Fondamentales" src="https://github.com/user-attachments/assets/8d89e195-65a7-4810-8dd1-11b4fd48a7e3" />
-<img width="1394" height="1898" alt="Screenshot 2026-06-28 at 14-24-54 📊 TRADING MONITOR - Indicateurs IA Fondamentales" src="https://github.com/user-attachments/assets/53ae8da6-6a04-4a38-9ce2-cdf07343a9ba" />
 # Monitor-Trading-Minitel-V3 
 
 📊 TRADING MONITOR INDICATEURS + IA ▸ RSI • MACD • SMA • BOLLINGER • STOCHASTIC • IA INSIGHTS  + FUNDS 
