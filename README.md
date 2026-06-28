@@ -13,7 +13,32 @@ Fonction	Icône	Description
 
 📊 Comparaison	btn-compare	Compare jusqu'à 5 actifs
 
+🎯    Fonctionnalité	Statut
 
+Graphiques chandeliers	✅
+
+Indicateurs techniques (7)	✅
+
+Insights IA (score, signaux)	✅
+
+Prédictions 5 jours	✅
+
+Données fondamentales	✅
+
+Alertes push	✅
+
+Préférences (localStorage)	✅
+
+Export CSV	✅
+
+Comparaison d'actifs	✅
+
+Watchlist par catégorie	✅
+
+Top Performers	✅
+
+WebSocket temps réel	✅
+___________________________________________________________________ .
 # PYTHON VENV 
 
     python -m venv mon
