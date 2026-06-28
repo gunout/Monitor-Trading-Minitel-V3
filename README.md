@@ -1,0 +1,2 @@
+# Monitor-Trading-Minitel-V3
+# Monitor-Trading-Minitel-V2 📊 TRADING MONITOR INDICATEURS + IA ▸ RSI • MACD • SMA • BOLLINGER • STOCHASTIC • IA INSIGHTS  + FUNDS 
