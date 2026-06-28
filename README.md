@@ -38,7 +38,9 @@ Watchlist par catégorie	✅
 Top Performers	✅
 
 WebSocket temps réel	✅
+
 ___________________________________________________________________ .
+
 # PYTHON VENV 
 
     python -m venv mon
