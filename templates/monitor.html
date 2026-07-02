@@ -69,40 +69,15 @@
         .tab:hover { background: rgba(51,255,51,0.1); }
         .tab.active { background: rgba(51,255,51,0.15); border-color: #33ff33; }
         .tab .icon { margin-right: 4px; }
-        .tab .badge-ind {
-            background: #ff6b00;
-            color: #000;
-            font-size: 0.45rem;
-            padding: 1px 6px;
-            border-radius: 8px;
-            margin-left: 4px;
-        }
-        .tab .badge-ia {
-            background: #00ccff;
-            color: #000;
-            font-size: 0.45rem;
-            padding: 1px 6px;
-            border-radius: 8px;
-            margin-left: 4px;
-        }
-        .tab .badge-fund {
-            background: #ffaa00;
-            color: #000;
-            font-size: 0.45rem;
-            padding: 1px 6px;
-            border-radius: 8px;
-            margin-left: 4px;
-        }
 
         .main-grid { display: grid; grid-template-columns: 2.5fr 1fr; gap: 12px; }
         .card { border: 1px solid #33ff33; padding: 10px; margin-bottom: 10px; background: rgba(51,255,51,0.02); }
-        .card-title { font-size: 0.9rem; font-weight: bold; border-bottom: 1px solid #33ff33; padding-bottom: 4px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .card-title { font-size: 0.9rem; font-weight: bold; border-bottom: 1px solid #33ff33; padding-bottom: 4px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px; }
 
         .price-display { text-align: center; padding: 15px; border: 1px solid #33ff33; }
         .price { font-size: 2.8rem; font-weight: bold; text-shadow: 0 0 30px rgba(51,255,51,0.1); }
         .change-positive { color: #33ff33; }
         .change-negative { color: #ff3333; }
-        #chart-container { height: 400px; border: 1px solid #33ff33; background: #0a0a0a; position: relative; }
 
         .chart-controls {
             display: flex;
@@ -143,8 +118,6 @@
         .chart-controls button.active { background: rgba(51,255,51,0.2); }
         .chart-controls button.indicator-btn { border-color: #ff6b00; color: #ff6b00; }
         .chart-controls button.indicator-btn.active { background: rgba(255,107,0,0.2); }
-        .chart-controls button.ia-btn { border-color: #00ccff; color: #00ccff; }
-        .chart-controls button.ia-btn.active { background: rgba(0,204,255,0.2); }
 
         .input-group { display: flex; gap: 6px; margin: 6px 0; }
         .input-group input {
@@ -168,16 +141,11 @@
         }
         .btn:hover { background: rgba(51,255,51,0.1); }
         .btn-sm { padding: 2px 8px; font-size: 0.65rem; }
-        .btn-ind { border-color: #ff6b00; color: #ff6b00; }
-        .btn-ia { border-color: #00ccff; color: #00ccff; }
-        .btn-fund { border-color: #ffaa00; color: #ffaa00; }
-        .btn-success { border-color: #33ff33; color: #33ff33; }
-        .btn-danger { border-color: #ff3333; color: #ff3333; }
-        .btn-warning { border-color: #ffaa00; color: #ffaa00; }
         .btn-export { border-color: #4CAF50; color: #4CAF50; }
         .btn-compare { border-color: #9C27B0; color: #9C27B0; }
         .btn-prefs { border-color: #FF9800; color: #FF9800; }
         .btn-alert { border-color: #ff1744; color: #ff1744; }
+        .btn-refresh { border-color: #00ccff; color: #00ccff; }
         .quick-buttons { display: flex; gap: 3px; flex-wrap: wrap; margin-top: 4px; }
 
         .watchlist-item {
@@ -258,11 +226,6 @@
         .recommendation-box .rec-title { font-size: 1.5rem; font-weight: bold; }
         .recommendation-box .rec-confidence { font-size: 0.8rem; opacity: 0.7; }
 
-        .metrics-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 6px; margin-top: 8px; }
-        .metric-card { border: 1px solid #33ff33; padding: 4px; text-align: center; background: rgba(51,255,51,0.02); border-radius: 4px; }
-        .metric-card .label { font-size: 0.5rem; text-transform: uppercase; opacity: 0.6; letter-spacing: 1px; }
-        .metric-card .value { font-size: 1rem; font-weight: bold; margin-top: 2px; }
-
         .prediction-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 4px; margin-top: 6px; }
         .prediction-item { text-align: center; padding: 4px; border: 1px solid #33ff33; background: rgba(51,255,51,0.02); border-radius: 4px; }
         .prediction-item .day { font-size: 0.5rem; text-transform: uppercase; opacity: 0.6; }
@@ -277,8 +240,6 @@
             font-size: 0.7rem;
             opacity: 0.6;
         }
-        .status-ok { color: #33ff33; }
-        .status-err { color: #ff3333; }
 
         .price-info {
             display: flex;
@@ -287,6 +248,7 @@
             font-size: 0.8rem;
             opacity: 0.7;
             margin-top: 6px;
+            flex-wrap: wrap;
         }
         .price-info span { display: flex; align-items: center; gap: 4px; }
 
@@ -310,18 +272,6 @@
         .signal-count.buy { background: rgba(51,255,51,0.2); color: #33ff33; }
         .signal-count.sell { background: rgba(255,51,51,0.2); color: #ff3333; }
 
-        .ia-score-box {
-            display: inline-block;
-            padding: 2px 10px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            font-weight: bold;
-        }
-        .ia-score-bullish { background: rgba(51,255,51,0.2); color: #33ff33; }
-        .ia-score-bearish { background: rgba(255,51,51,0.2); color: #ff3333; }
-        .ia-score-neutral { background: rgba(255,170,0,0.2); color: #ffaa00; }
-
-        /* Popup comparaison */
         .compare-modal {
             display: none;
             position: fixed;
@@ -331,9 +281,7 @@
             justify-content: center;
             align-items: center;
         }
-        .compare-modal.active {
-            display: flex;
-        }
+        .compare-modal.active { display: flex; }
         .compare-modal-content {
             background: #0a0a0a;
             border: 2px solid #33ff33;
@@ -367,7 +315,6 @@
         .compare-card .perf-positive { color: #33ff33; }
         .compare-card .perf-negative { color: #ff3333; }
 
-        /* Notifications */
         .notification {
             position: fixed;
             top: 20px;
@@ -381,10 +328,7 @@
             animation: slideIn 0.5s ease;
             box-shadow: 0 0 30px rgba(51,255,51,0.1);
         }
-        .notification.buy { border-color: #33ff33; }
-        .notification.sell { border-color: #ff3333; }
         .notification .notif-title { font-size: 1.2rem; font-weight: bold; }
-        .notification .notif-text { font-size: 0.8rem; opacity: 0.7; }
         .notification .notif-close {
             position: absolute;
             top: 5px;
@@ -399,24 +343,11 @@
             to { transform: translateX(0); opacity: 1; }
         }
 
-        /* Couleurs fondamentales */
-        .fund-positive { color: #33ff33; }
-        .fund-negative { color: #ff3333; }
-        .fund-neutral { color: #ffaa00; }
-
-        .sector-badge {
-            display: inline-block;
-            padding: 1px 8px;
-            border-radius: 10px;
-            font-size: 0.5rem;
-            background: rgba(51,255,51,0.1);
-            border: 1px solid rgba(51,255,51,0.2);
-        }
+        #chart-container { height: 400px; border: 1px solid #33ff33; background: #0a0a0a; position: relative; }
 
         @media (max-width: 1200px) { .main-grid { grid-template-columns: 1fr; } }
         @media (max-width: 768px) {
             .title { font-size: 1.5rem; }
-            .metrics-grid { grid-template-columns: repeat(2,1fr); }
             .indicators-grid { grid-template-columns: 1fr 1fr; }
             .price { font-size: 2rem; }
             .prediction-grid { grid-template-columns: repeat(3,1fr); }
@@ -426,8 +357,6 @@
         @media (max-width: 480px) {
             .price { font-size: 1.5rem; }
             #chart-container { height: 250px; }
-            .chart-controls .group { border-right: none; flex-wrap: wrap; }
-            .tabs .tab { font-size: 0.5rem; padding: 3px 6px; }
             .indicators-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -479,6 +408,7 @@
             <button class="tab" data-tab="water"><span class="icon">🌊</span>Eau</button>
             <button class="tab" data-tab="brics"><span class="icon">🌍</span>BRICS & EM</button>
             <button class="tab" data-tab="funds"><span class="icon">📊</span>FUNDS</button>
+            <button class="tab" data-tab="indices"><span class="icon">📈</span>INDICES</button>
         </div>
 
         <!-- CONTENU DES TABS -->
@@ -507,6 +437,9 @@
             <div class="tab-content" id="tab-funds">
                 <div class="main-grid" id="tab-grid-funds"></div>
             </div>
+            <div class="tab-content" id="tab-indices">
+                <div class="main-grid" id="tab-grid-indices"></div>
+            </div>
         </div>
 
         <div class="footer">
@@ -533,8 +466,8 @@
         // ================================================================
         // CONFIGURATION
         // ================================================================
-        var API_BASE = 'https://radio-gleaphe.duckdns.org/trading/api';
-        var WS_URL = 'https://radio-gleaphe.duckdns.org/trading';
+        var API_BASE = '';
+        var WS_URL = window.location.origin;
         var socket = io(WS_URL);
         var currentSymbol = 'GLD';
         var currentPeriod = '1d';
@@ -544,7 +477,6 @@
         var currentTab = 'commodities';
         var alertsEnabled = false;
         var lastAlertSymbol = '';
-        var fundamentalData = {};
 
         var activeIndicators = {
             sma: true,
@@ -557,40 +489,40 @@
         };
 
         var categorySymbols = {
-    'commodities': ['GLD', 'SLV', 'USO', 'BNO', 'UNG', 'CORN', 'WEAT', 'SOYB', 'CPER', 'DBC'],
-    'crypto': ['BTC-USD', 'ETH-USD', 'SOL-USD', 'ADA-USD', 'DOGE-USD', 'XRP-USD', 'BNB-USD'],
-    'forex': ['EURUSD=X', 'GBPUSD=X', 'USDJPY=X', 'USDCHF=X', 'AUDUSD=X', 'USDCAD=X'],
-    'usstocks': ['AAPL', 'MSFT', 'GOOGL', 'NVDA', 'TSLA', 'AMZN', 'META', 'JPM'],
-    'paris': ['ML.PA', 'SAN.PA', 'BNP.PA', 'OR.PA', 'AI.PA'],
-    'water': ['PHO', 'FIW', 'CGW', 'AWK', 'XYL'],
-    'brics': ['EEM', 'VWO', 'IEMG', 'FXI', 'EWZ', 'EZA', 'EPI', 'EWW', 'TUR', 'THD'],
-    'funds': ['SPY', 'QQQ', 'VTI', 'VOO', 'IVV', 'DIA', 'IWM', 'BND', 'AGG', 'VGK', 'VPL', 'SCHD', 'JEPI', 'GDX', 'XLE', 'XLF', 'XLK', 'XLV', 'XLI', 'XLP', 'XLY'],
-    'indices': ['^GSPC', '^DJI', '^IXIC', '^RUT', '^FTSE', '^GDAXI', '^N225', '^HSI', '^FCHI', '^STOXX50E']
-};
+            'commodities': ['GLD', 'SLV', 'USO', 'BNO', 'UNG', 'CORN', 'WEAT', 'SOYB', 'CPER', 'DBC'],
+            'crypto': ['BTC-USD', 'ETH-USD', 'SOL-USD', 'ADA-USD', 'DOGE-USD', 'XRP-USD', 'BNB-USD'],
+            'forex': ['EURUSD=X', 'GBPUSD=X', 'USDJPY=X', 'USDCHF=X', 'AUDUSD=X', 'USDCAD=X'],
+            'usstocks': ['AAPL', 'MSFT', 'GOOGL', 'NVDA', 'TSLA', 'AMZN', 'META', 'JPM'],
+            'paris': ['ML.PA', 'SAN.PA', 'BNP.PA', 'OR.PA', 'AI.PA'],
+            'water': ['PHO', 'FIW', 'CGW', 'AWK', 'XYL'],
+            'brics': ['EEM', 'VWO', 'IEMG', 'FXI', 'EWZ', 'EZA', 'EPI', 'EWW', 'TUR', 'THD'],
+            'funds': ['SPY', 'QQQ', 'VTI', 'VOO', 'IVV', 'DIA', 'IWM', 'BND', 'AGG', 'VGK', 'VPL', 'SCHD', 'JEPI', 'GDX', 'XLE', 'XLF', 'XLK', 'XLV', 'XLI', 'XLP', 'XLY'],
+            'indices': ['^GSPC', '^DJI', '^IXIC', '^RUT', '^FTSE', '^GDAXI', '^N225', '^HSI', '^FCHI', '^STOXX50E']
+        };
 
-var defaultSymbols = {
-    'commodities': 'GLD',
-    'crypto': 'BTC-USD',
-    'forex': 'EURUSD=X',
-    'usstocks': 'AAPL',
-    'paris': 'ML.PA',
-    'water': 'PHO',
-    'brics': 'EEM',
-    'funds': 'SPY',
-    'indices': '^GSPC'
-};
+        var defaultSymbols = {
+            'commodities': 'GLD',
+            'crypto': 'BTC-USD',
+            'forex': 'EURUSD=X',
+            'usstocks': 'AAPL',
+            'paris': 'ML.PA',
+            'water': 'PHO',
+            'brics': 'EEM',
+            'funds': 'SPY',
+            'indices': '^GSPC'
+        };
 
-var categoryNames = {
-    'commodities': 'Commodités',
-    'crypto': 'Crypto',
-    'forex': 'Forex',
-    'usstocks': 'US Stocks',
-    'paris': 'Paris',
-    'water': 'Eau',
-    'brics': '🌍 BRICS & EM',
-    'funds': '📊 FUNDS & ETFs',
-    'indices': '📈 INDICES'
-};
+        var categoryNames = {
+            'commodities': 'Commodités',
+            'crypto': 'Crypto',
+            'forex': 'Forex',
+            'usstocks': 'US Stocks',
+            'paris': 'Paris',
+            'water': 'Eau',
+            'brics': '🌍 BRICS & EM',
+            'funds': '📊 FUNDS & ETFs',
+            'indices': '📈 INDICES'
+        };
 
         // ================================================================
         // CHARGEMENT DES PRÉFÉRENCES
@@ -692,27 +624,12 @@ var categoryNames = {
             }, 5000);
         }
 
-        function sendBrowserNotification(title, body, type) {
-            if (!alertsEnabled) return;
-            if (!('Notification' in window)) return;
-            if (Notification.permission === 'granted') {
-                var notif = new Notification(title, {
-                    body: body,
-                    icon: type === 'buy' ? '🟢' : '🔴',
-                    tag: 'trading_alert'
-                });
-                setTimeout(function() { notif.close(); }, 8000);
-            } else if (Notification.permission === 'default') {
-                Notification.requestPermission();
-            }
-        }
-
         // ================================================================
         // EXPORT CSV
         // ================================================================
         function exportCSV() {
             var sym = currentSymbol;
-            window.open(API_BASE + '/export-csv/' + encodeURIComponent(sym), '_blank');
+            window.open(API_BASE + '/api/export-csv/' + encodeURIComponent(sym), '_blank');
             showNotification('📥 Export CSV lancé pour ' + sym, '📊');
         }
 
@@ -737,7 +654,7 @@ var categoryNames = {
             }
             document.getElementById('compare-results').innerHTML = '<div style="opacity:0.5;text-align:center;padding:20px;">⏳ Chargement...</div>';
 
-            fetch(API_BASE + '/compare?symbols=' + encodeURIComponent(symbols.join(',')))
+            fetch(API_BASE + '/api/compare?symbols=' + encodeURIComponent(symbols.join(',')))
                 .then(r => r.json())
                 .then(data => {
                     if (data.error) {
@@ -776,6 +693,73 @@ var categoryNames = {
         });
 
         // ================================================================
+        // FETCH INSIGHTS DIRECT
+        // ================================================================
+        function fetchInsights(symbol, category) {
+            if (!symbol) return;
+            fetch(API_BASE + '/api/insights/' + encodeURIComponent(symbol))
+                .then(r => {
+                    if (!r.ok) throw new Error('HTTP ' + r.status);
+                    return r.json();
+                })
+                .then(data => {
+                    if (data.error) {
+                        console.warn('Insights error:', data.error);
+                        return;
+                    }
+                    updateAIInsights(data);
+                    updateFundamentalData(data);
+                    
+                    var prefix = '-' + category;
+                    var scoreEl = document.getElementById('ia-score' + prefix);
+                    if (scoreEl && data.score !== undefined) {
+                        var score = data.score || 0;
+                        var color = score > 20 ? '#33ff33' : score < -20 ? '#ff3333' : '#ffaa00';
+                        scoreEl.textContent = score.toFixed(1);
+                        scoreEl.style.color = color;
+                    }
+                    
+                    var recoEl = document.getElementById('ia-reco' + prefix);
+                    if (recoEl && data.recommendation) {
+                        var rec = data.recommendation || 'NEUTRE';
+                        var color = rec === 'ACHAT' ? '#33ff33' : rec === 'VENTE' ? '#ff3333' : '#ffaa00';
+                        recoEl.textContent = rec;
+                        recoEl.style.color = color;
+                    }
+                    
+                    var confEl = document.getElementById('ia-conf' + prefix);
+                    if (confEl && data.confidence !== undefined) {
+                        confEl.textContent = (data.confidence || 50).toFixed(0) + '%';
+                    }
+                })
+                .catch(err => {
+                    console.warn('Erreur insights:', err);
+                });
+        }
+
+        // ================================================================
+        // FETCH FUNDAMENTAL DIRECT
+        // ================================================================
+        function fetchFundamental(symbol, category) {
+            if (!symbol) return;
+            fetch(API_BASE + '/api/fundamental/' + encodeURIComponent(symbol))
+                .then(r => {
+                    if (!r.ok) throw new Error('HTTP ' + r.status);
+                    return r.json();
+                })
+                .then(data => {
+                    if (data.error) {
+                        console.warn('Fundamental error:', data.error);
+                        return;
+                    }
+                    updateFundamentalDisplay(data, category);
+                })
+                .catch(err => {
+                    console.warn('Erreur fondamentales:', err);
+                });
+        }
+
+        // ================================================================
         // INITIALISATION
         // ================================================================
         document.addEventListener('DOMContentLoaded', function() {
@@ -804,7 +788,6 @@ var categoryNames = {
             socket.on('connect', function() {
                 document.getElementById('status').textContent = '🟢 CONNECTÉ';
                 document.getElementById('status').style.borderColor = '#33ff33';
-                socket.emit('request_insights', { symbol: currentSymbol });
             });
 
             socket.on('disconnect', function() {
@@ -821,11 +804,6 @@ var categoryNames = {
                     var icon = type === 'buy' ? '🟢' : '🔴';
                     var title = type === 'buy' ? '🚀 SIGNAL ACHAT' : '📉 SIGNAL VENTE';
                     showNotification(title + ' ' + data.symbol + ' (Score: ' + data.score.toFixed(1) + ')', icon);
-                    sendBrowserNotification(
-                        title + ' ' + data.symbol,
-                        'Score: ' + data.score.toFixed(1) + ' | Confiance: ' + data.confidence.toFixed(0) + '%',
-                        type
-                    );
                 }
             });
 
@@ -899,7 +877,7 @@ var categoryNames = {
                                 <button class="btn-export btn-sm" onclick="exportCSV()"><i class="fas fa-file-csv"></i></button>
                             </div>
                         </div>
-                        <div id="chart-container-${category}"></div>
+                        <div id="chart-container-${category}" style="height:400px;border:1px solid #33ff33;background:#0a0a0a;"></div>
                     </div>
                 </div>
 
@@ -980,6 +958,7 @@ var categoryNames = {
                         <div class="card-title">
                             <span><i class="fas fa-building" style="color:#ffaa00;"></i> DONNÉES FONDAMENTALES</span>
                             <span style="font-size:0.6rem;opacity:0.5;" id="fund-time-${category}">--</span>
+                            <button class="btn btn-sm btn-refresh" onclick="refreshFundamentals('${category}')"><i class="fas fa-sync"></i></button>
                         </div>
                         <div id="fundamental-container-${category}">
                             <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;font-size:0.8rem;">
@@ -1004,6 +983,7 @@ var categoryNames = {
                         <div class="card-title">
                             <span><i class="fas fa-brain" style="color:#00ccff;"></i> INSIGHTS IA</span>
                             <span id="signal-count-${category}" style="font-size:0.6rem;">--</span>
+                            <button class="btn btn-sm btn-refresh" onclick="refreshInsights('${category}')"><i class="fas fa-sync"></i></button>
                         </div>
                         <div id="signals-container-${category}">
                             <div class="signal-box signal-neutral">
@@ -1092,49 +1072,88 @@ var categoryNames = {
             var html = '';
             var count = 0;
             symbols.forEach(function(sym) {
-                if (count >= 15) return;
+                if (count >= 20) return;
                 var label = sym;
                 if (sym === 'GLD') label = '🥇 OR';
                 else if (sym === 'SLV') label = '🥈 ARGENT';
                 else if (sym === 'USO') label = '🛢️ WTI';
                 else if (sym === 'BNO') label = '🛢️ BRENT';
+                else if (sym === 'UNG') label = '🔥 GAZ';
+                else if (sym === 'CORN') label = '🌽 MAIS';
+                else if (sym === 'WEAT') label = '🌾 BLE';
+                else if (sym === 'SOYB') label = '🌱 SOJA';
+                else if (sym === 'CPER') label = '🔶 CUIVRE';
+                else if (sym === 'DBC') label = '📊 COMMO';
                 else if (sym === 'BTC-USD') label = '₿ BTC';
                 else if (sym === 'ETH-USD') label = '⟠ ETH';
+                else if (sym === 'SOL-USD') label = '◎ SOL';
+                else if (sym === 'ADA-USD') label = '₳ ADA';
+                else if (sym === 'DOGE-USD') label = '🐕 DOGE';
+                else if (sym === 'XRP-USD') label = '✕ XRP';
+                else if (sym === 'BNB-USD') label = '🟡 BNB';
                 else if (sym === 'EURUSD=X') label = '🇪🇺🇺🇸 EUR/USD';
+                else if (sym === 'GBPUSD=X') label = '🇬🇧🇺🇸 GBP/USD';
+                else if (sym === 'USDJPY=X') label = '🇺🇸🇯🇵 USD/JPY';
                 else if (sym === 'AAPL') label = '🍎 AAPL';
                 else if (sym === 'MSFT') label = '💻 MSFT';
+                else if (sym === 'GOOGL') label = '🔍 GOOGL';
+                else if (sym === 'NVDA') label = '🎮 NVDA';
+                else if (sym === 'TSLA') label = '🚗 TSLA';
+                else if (sym === 'AMZN') label = '📦 AMZN';
+                else if (sym === 'META') label = '📱 META';
+                else if (sym === 'JPM') label = '🏦 JPM';
                 else if (sym === 'ML.PA') label = '👔 LVMH';
+                else if (sym === 'SAN.PA') label = '💊 SANOFI';
+                else if (sym === 'BNP.PA') label = '🏛️ BNP';
+                else if (sym === 'OR.PA') label = '💄 LOREAL';
+                else if (sym === 'AI.PA') label = '💨 AIR LIQUIDE';
                 else if (sym === 'PHO') label = '🌊 PHO';
-                // BRICS
+                else if (sym === 'FIW') label = '🌊 FIW';
+                else if (sym === 'CGW') label = '🌊 CGW';
+                else if (sym === 'AWK') label = '💧 AWK';
+                else if (sym === 'XYL') label = '💧 XYL';
                 else if (sym === 'EEM') label = '🌍 EM MSCI';
                 else if (sym === 'VWO') label = '🌍 Vanguard EM';
-                else if (sym === 'FXI') label = '🇨🇳 China';
-                else if (sym === 'EWZ') label = '🇧🇷 Brazil';
-                else if (sym === 'EPI') label = '🇮🇳 India';
-                else if (sym === 'EWW') label = '🇲🇽 Mexico';
-                else if (sym === 'TUR') label = '🇹🇷 Turkey';
-                else if (sym === 'THD') label = '🇹🇭 Thailand';
-                // FUNDS
-                else if (sym === 'SPY') label = '📊 S&P 500';
-                else if (sym === 'QQQ') label = '📈 Nasdaq';
-                else if (sym === 'VTI') label = '🌎 Total Market';
-                else if (sym === 'VOO') label = '📊 S&P Vanguard';
-                else if (sym === 'IVV') label = '📊 S&P iShares';
-                else if (sym === 'BND') label = '🔵 Bonds';
-                else if (sym === 'AGG') label = '🔵 Aggregate';
-                else if (sym === 'VGK') label = '🇪🇺 Europe';
-                else if (sym === 'VPL') label = '🌏 Pacific';
-                else if (sym === 'SCHD') label = '💰 Dividends';
-                else if (sym === 'JEPI') label = '🏦 Income';
-                else if (sym === 'GDX') label = '⛏️ Gold Miners';
-                else if (sym === 'XLE') label = '🛢️ Energy';
-                else if (sym === 'XLF') label = '🏛️ Financial';
-                else if (sym === 'XLK') label = '💻 Tech';
-                else if (sym === 'XLV') label = '💊 Healthcare';
-                else if (sym === 'XLI') label = '🏗️ Industrials';
-                else if (sym === 'XLP') label = '🛒 Consumer';
-                else if (sym === 'XLY') label = '🛍️ Discretionary';
-                else label = sym.replace('-USD', '').replace('.PA', '').replace('=X', '').replace('.ME', '');
+                else if (sym === 'IEMG') label = '🌍 iShares EM';
+                else if (sym === 'FXI') label = '🇨🇳 CHINA';
+                else if (sym === 'EWZ') label = '🇧🇷 BRAZIL';
+                else if (sym === 'EZA') label = '🇿🇦 S.AFRICA';
+                else if (sym === 'EPI') label = '🇮🇳 INDIA';
+                else if (sym === 'EWW') label = '🇲🇽 MEXICO';
+                else if (sym === 'TUR') label = '🇹🇷 TURKEY';
+                else if (sym === 'THD') label = '🇹🇭 THAILAND';
+                else if (sym === 'SPY') label = '📊 SPY';
+                else if (sym === 'QQQ') label = '📈 QQQ';
+                else if (sym === 'VTI') label = '🌎 VTI';
+                else if (sym === 'VOO') label = '📊 VOO';
+                else if (sym === 'IVV') label = '📊 IVV';
+                else if (sym === 'DIA') label = '📊 DIA';
+                else if (sym === 'IWM') label = '📊 IWM';
+                else if (sym === 'BND') label = '🔵 BND';
+                else if (sym === 'AGG') label = '🔵 AGG';
+                else if (sym === 'VGK') label = '🇪🇺 VGK';
+                else if (sym === 'VPL') label = '🌏 VPL';
+                else if (sym === 'SCHD') label = '💰 SCHD';
+                else if (sym === 'JEPI') label = '🏦 JEPI';
+                else if (sym === 'GDX') label = '⛏️ GDX';
+                else if (sym === 'XLE') label = '🛢️ XLE';
+                else if (sym === 'XLF') label = '🏛️ XLF';
+                else if (sym === 'XLK') label = '💻 XLK';
+                else if (sym === 'XLV') label = '💊 XLV';
+                else if (sym === 'XLI') label = '🏗️ XLI';
+                else if (sym === 'XLP') label = '🛒 XLP';
+                else if (sym === 'XLY') label = '🛍️ XLY';
+                else if (sym === '^GSPC') label = '📈 S&P500';
+                else if (sym === '^DJI') label = '📈 DOW JONES';
+                else if (sym === '^IXIC') label = '📈 NASDAQ';
+                else if (sym === '^RUT') label = '📈 RUSSELL';
+                else if (sym === '^FTSE') label = '🇬🇧 FTSE';
+                else if (sym === '^GDAXI') label = '🇩🇪 DAX';
+                else if (sym === '^N225') label = '🇯🇵 NIKKEI';
+                else if (sym === '^HSI') label = '🇭🇰 HANG SENG';
+                else if (sym === '^FCHI') label = '🇫🇷 CAC 40';
+                else if (sym === '^STOXX50E') label = '🇪🇺 STOXX 50';
+                else label = sym;
                 html += '<button class="btn btn-sm" onclick="quickSelect(\'' + sym + '\')">' + label + '</button>';
                 count++;
             });
@@ -1154,7 +1173,7 @@ var categoryNames = {
             statusEl.textContent = '⏳ CHARGEMENT...';
             statusEl.style.borderColor = '#33ff33';
 
-            fetch(API_BASE + '/trading/' + encodeURIComponent(sym))
+            fetch(API_BASE + '/api/trading/' + encodeURIComponent(sym))
                 .then(r => {
                     if (!r.ok) throw new Error('HTTP ' + r.status);
                     return r.json();
@@ -1172,9 +1191,10 @@ var categoryNames = {
                     updateIndicators(data, category);
                     document.getElementById('last-update-' + category).textContent = new Date().toLocaleTimeString('fr-FR');
 
-                    if (socket.connected) {
-                        socket.emit('request_insights', { symbol: sym });
-                    }
+                    // Appeler directement les APIs
+                    fetchInsights(sym, category);
+                    fetchFundamental(sym, category);
+
                     try {
                         var prefs = JSON.parse(localStorage.getItem('trading_monitor_prefs') || '{}');
                         prefs.favorite_symbol = sym;
@@ -1188,8 +1208,20 @@ var categoryNames = {
                 });
         }
 
-        function fetchData() {
-            fetchDataForTab(currentTab);
+        function refreshFundamentals(category) {
+            var input = document.getElementById('symbol-input-' + category);
+            if (!input) return;
+            var sym = input.value.trim() || defaultSymbols[category] || 'GLD';
+            fetchFundamental(sym, category);
+            showNotification('📊 Données fondamentales mises à jour', '✅');
+        }
+
+        function refreshInsights(category) {
+            var input = document.getElementById('symbol-input-' + category);
+            if (!input) return;
+            var sym = input.value.trim() || defaultSymbols[category] || 'GLD';
+            fetchInsights(sym, category);
+            showNotification('🧠 Insights IA mises à jour', '✅');
         }
 
         // ================================================================
@@ -1290,7 +1322,7 @@ var categoryNames = {
         }
 
         // ================================================================
-        // UPDATE DONNÉES FONDAMENTALES
+        // UPDATE DONNÉES FONDAMENTALES (depuis insights)
         // ================================================================
         function updateFundamentalData(data) {
             if (!data || !data.fundamental) return;
@@ -1313,14 +1345,14 @@ var categoryNames = {
             var pe = fund.pe_ratio;
             var peEl = document.getElementById('fund-pe' + prefix);
             if (peEl) {
-                peEl.textContent = pe !== 'N/A' && pe !== null ? pe.toFixed(2) : 'N/A';
-                peEl.className = 'value ' + (pe < 15 ? 'bullish' : pe > 30 ? 'bearish' : 'neutral');
+                peEl.textContent = pe !== 'N/A' && pe !== null && pe !== 0 ? pe.toFixed(2) : 'N/A';
+                peEl.className = 'value ' + (pe < 15 && pe > 0 ? 'bullish' : pe > 30 ? 'bearish' : 'neutral');
             }
 
             var div = fund.dividend_yield;
             var divEl = document.getElementById('fund-dividend' + prefix);
             if (divEl) {
-                divEl.textContent = div !== 'N/A' && div !== null ? (div * 100).toFixed(2) + '%' : 'N/A';
+                divEl.textContent = div !== 'N/A' && div !== null && div > 0 ? (div * 100).toFixed(2) + '%' : 'N/A';
                 divEl.className = 'value ' + (div > 0.03 ? 'bullish' : div > 0 ? 'neutral' : 'neutral');
             }
 
@@ -1342,14 +1374,14 @@ var categoryNames = {
             var betaEl = document.getElementById('fund-beta' + prefix);
             if (betaEl) {
                 betaEl.textContent = beta !== 'N/A' && beta !== null ? beta.toFixed(2) : 'N/A';
-                betaEl.className = 'value ' + (beta > 1.5 ? 'bearish' : beta < 0.8 ? 'bullish' : 'neutral');
+                betaEl.className = 'value ' + (beta > 1.5 ? 'bearish' : beta < 0.8 && beta > 0 ? 'bullish' : 'neutral');
             }
 
             var eps = fund.eps;
             var epsEl = document.getElementById('fund-eps' + prefix);
             if (epsEl) {
                 epsEl.textContent = eps !== 'N/A' && eps !== null ? eps.toFixed(2) : 'N/A';
-                epsEl.className = 'value ' + (eps > 0 ? 'bullish' : 'bearish');
+                epsEl.className = 'value ' + (eps > 0 ? 'bullish' : eps < 0 ? 'bearish' : 'neutral');
             }
 
             var margin = fund.profit_margin;
@@ -1370,7 +1402,7 @@ var categoryNames = {
             var debtEl = document.getElementById('fund-debt' + prefix);
             if (debtEl) {
                 debtEl.textContent = debt !== 'N/A' && debt !== null ? debt.toFixed(2) : 'N/A';
-                debtEl.className = 'value ' + (debt < 0.5 ? 'bullish' : debt < 1.5 ? 'neutral' : 'bearish');
+                debtEl.className = 'value ' + (debt < 0.5 && debt > 0 ? 'bullish' : debt < 1.5 ? 'neutral' : 'bearish');
             }
 
             var high52 = fund.fifty_two_week_high;
@@ -1387,6 +1419,95 @@ var categoryNames = {
                 low52El.className = 'value neutral';
             }
 
+            document.getElementById('fund-time' + prefix).textContent = new Date().toLocaleTimeString('fr-FR');
+        }
+
+        // ================================================================
+        // UPDATE FONDAMENTALES DIRECTES
+        // ================================================================
+        function updateFundamentalDisplay(fund, category) {
+            var prefix = '-' + category;
+            
+            document.getElementById('fund-sector' + prefix).textContent = fund.sector || 'N/A';
+            document.getElementById('fund-industry' + prefix).textContent = fund.industry || 'N/A';
+            
+            var pe = fund.pe_ratio;
+            var peEl = document.getElementById('fund-pe' + prefix);
+            if (peEl) {
+                peEl.textContent = pe !== 'N/A' && pe !== null && pe !== 0 ? pe.toFixed(2) : 'N/A';
+                peEl.className = 'value ' + (pe < 15 && pe > 0 ? 'bullish' : pe > 30 ? 'bearish' : 'neutral');
+            }
+            
+            var div = fund.dividend_yield;
+            var divEl = document.getElementById('fund-dividend' + prefix);
+            if (divEl) {
+                divEl.textContent = div !== 'N/A' && div !== null && div > 0 ? (div * 100).toFixed(2) + '%' : 'N/A';
+                divEl.className = 'value ' + (div > 0.03 ? 'bullish' : div > 0 ? 'neutral' : 'neutral');
+            }
+            
+            var mcap = fund.market_cap;
+            var mcapEl = document.getElementById('fund-mcap' + prefix);
+            if (mcapEl) {
+                if (mcap !== 'N/A' && mcap !== null && mcap > 0) {
+                    if (mcap >= 1e12) mcapEl.textContent = (mcap / 1e12).toFixed(2) + ' T$';
+                    else if (mcap >= 1e9) mcapEl.textContent = (mcap / 1e9).toFixed(2) + ' Md$';
+                    else if (mcap >= 1e6) mcapEl.textContent = (mcap / 1e6).toFixed(2) + ' M$';
+                    else mcapEl.textContent = mcap.toFixed(0) + '$';
+                } else {
+                    mcapEl.textContent = 'N/A';
+                }
+                mcapEl.className = 'value neutral';
+            }
+            
+            var beta = fund.beta;
+            var betaEl = document.getElementById('fund-beta' + prefix);
+            if (betaEl) {
+                betaEl.textContent = beta !== 'N/A' && beta !== null ? beta.toFixed(2) : 'N/A';
+                betaEl.className = 'value ' + (beta > 1.5 ? 'bearish' : beta < 0.8 && beta > 0 ? 'bullish' : 'neutral');
+            }
+            
+            var eps = fund.eps;
+            var epsEl = document.getElementById('fund-eps' + prefix);
+            if (epsEl) {
+                epsEl.textContent = eps !== 'N/A' && eps !== null ? eps.toFixed(2) : 'N/A';
+                epsEl.className = 'value ' + (eps > 0 ? 'bullish' : eps < 0 ? 'bearish' : 'neutral');
+            }
+            
+            var margin = fund.profit_margin;
+            var marginEl = document.getElementById('fund-margin' + prefix);
+            if (marginEl) {
+                marginEl.textContent = margin !== 'N/A' && margin !== null ? (margin * 100).toFixed(1) + '%' : 'N/A';
+                marginEl.className = 'value ' + (margin > 0.15 ? 'bullish' : margin > 0 ? 'neutral' : 'bearish');
+            }
+            
+            var roe = fund.return_on_equity;
+            var roeEl = document.getElementById('fund-roe' + prefix);
+            if (roeEl) {
+                roeEl.textContent = roe !== 'N/A' && roe !== null ? (roe * 100).toFixed(1) + '%' : 'N/A';
+                roeEl.className = 'value ' + (roe > 0.15 ? 'bullish' : roe > 0 ? 'neutral' : 'bearish');
+            }
+            
+            var debt = fund.debt_to_equity;
+            var debtEl = document.getElementById('fund-debt' + prefix);
+            if (debtEl) {
+                debtEl.textContent = debt !== 'N/A' && debt !== null ? debt.toFixed(2) : 'N/A';
+                debtEl.className = 'value ' + (debt < 0.5 && debt > 0 ? 'bullish' : debt < 1.5 ? 'neutral' : 'bearish');
+            }
+            
+            var high52 = fund.fifty_two_week_high;
+            var high52El = document.getElementById('fund-high52' + prefix);
+            if (high52El) {
+                high52El.textContent = high52 !== 'N/A' && high52 !== null ? '$' + high52.toFixed(2) : 'N/A';
+                high52El.className = 'value neutral';
+            }
+            
+            var low52 = fund.fifty_two_week_low;
+            var low52El = document.getElementById('fund-low52' + prefix);
+            if (low52El) {
+                low52El.textContent = low52 !== 'N/A' && low52 !== null ? '$' + low52.toFixed(2) : 'N/A';
+                low52El.className = 'value neutral';
+            }
+            
             document.getElementById('fund-time' + prefix).textContent = new Date().toLocaleTimeString('fr-FR');
         }
 
@@ -1518,7 +1639,7 @@ var categoryNames = {
             }
 
             var chartInstance = LightweightCharts.createChart(container, {
-                width: container.clientWidth,
+                width: container.clientWidth || 400,
                 height: 400,
                 layout: {
                     background: { color: '#0a0a0a' },
@@ -1733,7 +1854,7 @@ var categoryNames = {
             if (!container) return;
             container.innerHTML = 'CHARGEMENT...';
 
-            fetch(API_BASE + '/watchlist')
+            fetch(API_BASE + '/api/watchlist')
                 .then(r => r.json())
                 .then(data => {
                     if (!data || data.error) {
@@ -1769,7 +1890,7 @@ var categoryNames = {
             if (!container) return;
             container.innerHTML = 'CHARGEMENT...';
 
-            fetch(API_BASE + '/top-performers')
+            fetch(API_BASE + '/api/top-performers')
                 .then(r => r.json())
                 .then(data => {
                     if (!data || data.error) {
