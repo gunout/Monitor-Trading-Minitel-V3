@@ -557,37 +557,40 @@
         };
 
         var categorySymbols = {
-            'commodities': ['GLD', 'SLV', 'USO', 'BNO', 'UNG', 'CORN', 'WEAT', 'SOYB', 'CPER', 'DBC'],
-            'crypto': ['BTC-USD', 'ETH-USD', 'SOL-USD', 'ADA-USD', 'DOGE-USD', 'XRP-USD', 'BNB-USD'],
-            'forex': ['EURUSD=X', 'GBPUSD=X', 'USDJPY=X', 'USDCHF=X', 'AUDUSD=X', 'USDCAD=X'],
-            'usstocks': ['AAPL', 'MSFT', 'GOOGL', 'NVDA', 'TSLA', 'AMZN', 'META', 'JPM', '^GSPC'],
-            'paris': ['ML.PA', 'SAN.PA', 'BNP.PA', 'OR.PA', 'AI.PA', '^FCHI'],
-            'water': ['PHO', 'FIW', 'CGW', 'AWK', 'XYL'],
-            'brics': ['EEM', 'VWO', 'IEMG', 'FXI', 'EWZ', 'EZA', 'EPI', 'EWW', 'TUR', 'THD'],
-            'funds': ['SPY', 'QQQ', 'VTI', 'VOO', 'IVV', 'BND', 'AGG', 'VGK', 'VPL', 'SCHD', 'JEPI', 'GDX', 'XLE', 'XLF', 'XLK', 'XLV', 'XLI', 'XLP', 'XLY']
-        };
+    'commodities': ['GLD', 'SLV', 'USO', 'BNO', 'UNG', 'CORN', 'WEAT', 'SOYB', 'CPER', 'DBC'],
+    'crypto': ['BTC-USD', 'ETH-USD', 'SOL-USD', 'ADA-USD', 'DOGE-USD', 'XRP-USD', 'BNB-USD'],
+    'forex': ['EURUSD=X', 'GBPUSD=X', 'USDJPY=X', 'USDCHF=X', 'AUDUSD=X', 'USDCAD=X'],
+    'usstocks': ['AAPL', 'MSFT', 'GOOGL', 'NVDA', 'TSLA', 'AMZN', 'META', 'JPM'],
+    'paris': ['ML.PA', 'SAN.PA', 'BNP.PA', 'OR.PA', 'AI.PA'],
+    'water': ['PHO', 'FIW', 'CGW', 'AWK', 'XYL'],
+    'brics': ['EEM', 'VWO', 'IEMG', 'FXI', 'EWZ', 'EZA', 'EPI', 'EWW', 'TUR', 'THD'],
+    'funds': ['SPY', 'QQQ', 'VTI', 'VOO', 'IVV', 'DIA', 'IWM', 'BND', 'AGG', 'VGK', 'VPL', 'SCHD', 'JEPI', 'GDX', 'XLE', 'XLF', 'XLK', 'XLV', 'XLI', 'XLP', 'XLY'],
+    'indices': ['^GSPC', '^DJI', '^IXIC', '^RUT', '^FTSE', '^GDAXI', '^N225', '^HSI', '^FCHI', '^STOXX50E']
+};
 
-        var defaultSymbols = {
-            'commodities': 'GLD',
-            'crypto': 'BTC-USD',
-            'forex': 'EURUSD=X',
-            'usstocks': 'AAPL',
-            'paris': 'ML.PA',
-            'water': 'PHO',
-            'brics': 'EEM',
-            'funds': 'SPY'
-        };
+var defaultSymbols = {
+    'commodities': 'GLD',
+    'crypto': 'BTC-USD',
+    'forex': 'EURUSD=X',
+    'usstocks': 'AAPL',
+    'paris': 'ML.PA',
+    'water': 'PHO',
+    'brics': 'EEM',
+    'funds': 'SPY',
+    'indices': '^GSPC'
+};
 
-        var categoryNames = {
-            'commodities': 'Commodités',
-            'crypto': 'Crypto',
-            'forex': 'Forex',
-            'usstocks': 'US Stocks',
-            'paris': 'Paris',
-            'water': 'Eau',
-            'brics': '🌍 BRICS & EM',
-            'funds': '📊 FUNDS & ETFs'
-        };
+var categoryNames = {
+    'commodities': 'Commodités',
+    'crypto': 'Crypto',
+    'forex': 'Forex',
+    'usstocks': 'US Stocks',
+    'paris': 'Paris',
+    'water': 'Eau',
+    'brics': '🌍 BRICS & EM',
+    'funds': '📊 FUNDS & ETFs',
+    'indices': '📈 INDICES'
+};
 
         // ================================================================
         // CHARGEMENT DES PRÉFÉRENCES
