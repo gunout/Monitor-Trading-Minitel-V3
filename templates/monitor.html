@@ -471,13 +471,14 @@
 
         <!-- TABS -->
         <div class="tabs" id="tabs">
-            <button class="tab active" data-tab="commodities"><span class="icon">🛢️</span>Commodités</button>
-            <button class="tab" data-tab="crypto"><span class="icon">₿</span>Crypto</button>
-            <button class="tab" data-tab="forex"><span class="icon">💱</span>Forex</button>
-            <button class="tab" data-tab="usstocks"><span class="icon">🇺🇸</span>US Stocks</button>
-            <button class="tab" data-tab="paris"><span class="icon">🇫🇷</span>Paris</button>
-            <button class="tab" data-tab="water"><span class="icon">🌊</span>Eau</button>
-        </div>
+    <button class="tab active" data-tab="commodities"><span class="icon">🛢️</span>Commodités</button>
+    <button class="tab" data-tab="crypto"><span class="icon">₿</span>Crypto</button>
+    <button class="tab" data-tab="forex"><span class="icon">💱</span>Forex</button>
+    <button class="tab" data-tab="usstocks"><span class="icon">🇺🇸</span>US Stocks</button>
+    <button class="tab" data-tab="paris"><span class="icon">🇫🇷</span>Paris</button>
+    <button class="tab" data-tab="water"><span class="icon">🌊</span>Eau</button>
+    <button class="tab" data-tab="brics"><span class="icon">🌍</span>BRICS & EM</button>
+</div>
 
         <!-- CONTENU DES TABS -->
         <div id="tab-contents">
@@ -499,6 +500,9 @@
             <div class="tab-content" id="tab-water">
                 <div class="main-grid" id="tab-grid-water"></div>
             </div>
+            <div class="tab-content" id="tab-brics">
+    <div class="main-grid" id="tab-grid-brics"></div>
+</div>
         </div>
 
         <div class="footer">
@@ -525,8 +529,8 @@
         // ================================================================
         // CONFIGURATION
         // ================================================================
-        var API_BASE = 'http://localhost:5000/api';
-        var WS_URL = 'http://localhost:5000';
+        var API_BASE = 'https://radio-gleaphe.duckdns.org/trading/api';
+        var WS_URL = 'https://radio-gleaphe.duckdns.org/trading';
         var socket = io(WS_URL);
         var currentSymbol = 'GLD';
         var currentPeriod = '1d';
@@ -549,31 +553,34 @@
         };
 
         var categorySymbols = {
-            'commodities': ['GLD', 'SLV', 'USO', 'BNO', 'UNG', 'CORN', 'WEAT', 'SOYB', 'JO', 'NIB', 'CPER'],
-            'crypto': ['BTC-USD', 'ETH-USD', 'SOL-USD', 'ADA-USD', 'DOGE-USD', 'XRP-USD', 'BNB-USD'],
-            'forex': ['EURUSD=X', 'GBPUSD=X', 'USDJPY=X', 'USDCHF=X', 'AUDUSD=X', 'USDCAD=X'],
-            'usstocks': ['AAPL', 'MSFT', 'GOOGL', 'NVDA', 'TSLA', 'AMZN', 'META', 'JPM', '^GSPC'],
-            'paris': ['ML.PA', 'SAN.PA', 'BNP.PA', 'OR.PA', 'AI.PA', '^FCHI'],
-            'water': ['PHO', 'FIW', 'CGW', 'AWK', 'XYL']
-        };
+    'commodities': ['GLD', 'SLV', 'USO', 'BNO', 'UNG', 'CORN', 'WEAT', 'SOYB', 'CPER', 'DBC'],
+    'crypto': ['BTC-USD', 'ETH-USD', 'SOL-USD', 'ADA-USD', 'DOGE-USD', 'XRP-USD', 'BNB-USD'],
+    'forex': ['EURUSD=X', 'GBPUSD=X', 'USDJPY=X', 'USDCHF=X', 'AUDUSD=X', 'USDCAD=X'],
+    'usstocks': ['AAPL', 'MSFT', 'GOOGL', 'NVDA', 'TSLA', 'AMZN', 'META', 'JPM', '^GSPC'],
+    'paris': ['ML.PA', 'SAN.PA', 'BNP.PA', 'OR.PA', 'AI.PA', '^FCHI'],
+    'water': ['PHO', 'FIW', 'CGW', 'AWK', 'XYL'],
+    'brics': ['EEM', 'VWO', 'IEMG', 'FXI', 'EWZ', 'EZA', 'EPI', 'EWW', 'TUR', 'THD']
+};
 
-        var defaultSymbols = {
-            'commodities': 'GLD',
-            'crypto': 'BTC-USD',
-            'forex': 'EURUSD=X',
-            'usstocks': 'AAPL',
-            'paris': 'ML.PA',
-            'water': 'PHO'
-        };
+var defaultSymbols = {
+    'commodities': 'GLD',
+    'crypto': 'BTC-USD',
+    'forex': 'EURUSD=X',
+    'usstocks': 'AAPL',
+    'paris': 'ML.PA',
+    'water': 'PHO',
+    'brics': 'EEM'
+};
 
-        var categoryNames = {
-            'commodities': 'Commodités',
-            'crypto': 'Crypto',
-            'forex': 'Forex',
-            'usstocks': 'US Stocks',
-            'paris': 'Paris',
-            'water': 'Eau'
-        };
+var categoryNames = {
+    'commodities': 'Commodités',
+    'crypto': 'Crypto',
+    'forex': 'Forex',
+    'usstocks': 'US Stocks',
+    'paris': 'Paris',
+    'water': 'Eau',
+    'brics': '🌍 BRICS & EM'
+};
 
         // ================================================================
         // CHARGEMENT DES PRÉFÉRENCES
@@ -1088,7 +1095,18 @@
                 else if (sym === 'MSFT') label = '💻 MSFT';
                 else if (sym === 'ML.PA') label = '👔 LVMH';
                 else if (sym === 'PHO') label = '🌊 PHO';
-                else label = sym.replace('-USD', '').replace('.PA', '').replace('=X', '');
+                else if (sym === 'SBER.ME') label = '🏦 Sberbank';
+                else if (sym === 'GAZP.ME') label = '⛽ Gazprom';
+                else if (sym === 'LKOH.ME') label = '🛢️ Lukoil';
+                else if (sym === 'ROSN.ME') label = '🛢️ Rosneft';
+                else if (sym === 'GMKN.ME') label = '⛏️ Norilsk';
+                else if (sym === 'MTSS.ME') label = '📱 MTS';
+                else if (sym === 'NVTK.ME') label = '🔥 Novatek';
+                else if (sym === 'RUAL.ME') label = '🏗️ Rusal';
+                else if (sym === 'AFLT.ME') label = '✈️ Aeroflot';
+                else if (sym === 'YNDX.ME') label = '🔍 Yandex';
+                else if (sym === 'MOEX.ME') label = '📊 MOEX';
+                else label = sym.replace('-USD', '').replace('.PA', '').replace('=X', '').replace('.ME', '');
                 html += '<button class="btn btn-sm" onclick="quickSelect(\'' + sym + '\')">' + label + '</button>';
                 count++;
             });

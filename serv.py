@@ -74,11 +74,11 @@ def safe_int(v, default=0):
         return default
 
 # ============================================================
-# DONNÉES PAR CATÉGORIE (CORRIGÉES)
+# DONNÉES PAR CATÉGORIE - SYMBOLES QUI FONCTIONNENT
 # ============================================================
 
 ASSETS = {
-    # ========== COMMODITÉS (ETFs pour plus de stabilité) ==========
+    # ========== COMMODITÉS ==========
     'GLD': {'name': 'Or', 'exchange': 'NYSE', 'category': 'Commodités', 'icon': '🥇', 'color': '#ffd700', 'sector': 'Commodity ETF'},
     'SLV': {'name': 'Argent', 'exchange': 'NYSE', 'category': 'Commodités', 'icon': '🥈', 'color': '#c0c0c0', 'sector': 'Commodity ETF'},
     'USO': {'name': 'Pétrole WTI', 'exchange': 'NYSE', 'category': 'Commodités', 'icon': '🛢️', 'color': '#ff6b00', 'sector': 'Commodity ETF'},
@@ -87,9 +87,8 @@ ASSETS = {
     'CORN': {'name': 'Maïs', 'exchange': 'NASDAQ', 'category': 'Commodités', 'icon': '🌽', 'color': '#ffd700', 'sector': 'Commodity ETF'},
     'WEAT': {'name': 'Blé', 'exchange': 'NASDAQ', 'category': 'Commodités', 'icon': '🌾', 'color': '#d4a574', 'sector': 'Commodity ETF'},
     'SOYB': {'name': 'Soja', 'exchange': 'NASDAQ', 'category': 'Commodités', 'icon': '🌱', 'color': '#8bc34a', 'sector': 'Commodity ETF'},
-    'JO': {'name': 'Café', 'exchange': 'NYSE', 'category': 'Commodités', 'icon': '☕', 'color': '#6d4c41', 'sector': 'Commodity ETF'},
-    'NIB': {'name': 'Cacao', 'exchange': 'NYSE', 'category': 'Commodités', 'icon': '🍫', 'color': '#5d4037', 'sector': 'Commodity ETF'},
     'CPER': {'name': 'Cuivre', 'exchange': 'NYSE', 'category': 'Commodités', 'icon': '🔶', 'color': '#e65100', 'sector': 'Commodity ETF'},
+    'DBC': {'name': 'Commodities Index', 'exchange': 'NYSE', 'category': 'Commodités', 'icon': '📊', 'color': '#ff6b00', 'sector': 'Commodity ETF'},
 
     # ========== CRYPTO ==========
     'BTC-USD': {'name': 'Bitcoin', 'exchange': 'CRYPTO', 'category': 'Crypto', 'icon': '₿', 'color': '#ffaa00', 'sector': 'Cryptocurrency'},
@@ -133,12 +132,26 @@ ASSETS = {
     'CGW': {'name': 'Invesco S&P Water ETF', 'exchange': 'NYSE', 'category': 'Eau', 'icon': '🌊', 'color': '#0077bb', 'sector': 'ETF'},
     'AWK': {'name': 'American Water Works', 'exchange': 'NYSE', 'category': 'Eau', 'icon': '💧', 'color': '#004d99', 'sector': 'Utilities'},
     'XYL': {'name': 'Xylem Inc.', 'exchange': 'NYSE', 'category': 'Eau', 'icon': '💧', 'color': '#0088cc', 'sector': 'Industrials'},
+
+    # ========== BRICS / MARCHES EMERGENTS (remplacement MOEX) ==========
+    # Tous ces symboles sont vérifiés et fonctionnent
+    'EEM': {'name': 'MSCI Emerging Markets', 'exchange': 'NYSE', 'category': 'BRICS & EM', 'icon': '🌍', 'color': '#00a859', 'sector': 'ETF'},
+    'VWO': {'name': 'Vanguard Emerging Markets', 'exchange': 'NYSE', 'category': 'BRICS & EM', 'icon': '🌍', 'color': '#0047ab', 'sector': 'ETF'},
+    'IEMG': {'name': 'iShares Core MSCI EM', 'exchange': 'NYSE', 'category': 'BRICS & EM', 'icon': '🌍', 'color': '#ff6b00', 'sector': 'ETF'},
+    'FXI': {'name': 'China Large Cap', 'exchange': 'NYSE', 'category': 'BRICS & EM', 'icon': '🇨🇳', 'color': '#de2910', 'sector': 'ETF'},
+    'EWZ': {'name': 'Brazil', 'exchange': 'NYSE', 'category': 'BRICS & EM', 'icon': '🇧🇷', 'color': '#009739', 'sector': 'ETF'},
+    'EZA': {'name': 'South Africa', 'exchange': 'NYSE', 'category': 'BRICS & EM', 'icon': '🇿🇦', 'color': '#de3831', 'sector': 'ETF'},
+    'EPI': {'name': 'India', 'exchange': 'NYSE', 'category': 'BRICS & EM', 'icon': '🇮🇳', 'color': '#ff9933', 'sector': 'ETF'},
+    'EWW': {'name': 'Mexico', 'exchange': 'NYSE', 'category': 'BRICS & EM', 'icon': '🇲🇽', 'color': '#006341', 'sector': 'ETF'},
+    'TUR': {'name': 'Turkey', 'exchange': 'NYSE', 'category': 'BRICS & EM', 'icon': '🇹🇷', 'color': '#e30a17', 'sector': 'ETF'},
+    'THD': {'name': 'Thailand', 'exchange': 'NYSE', 'category': 'BRICS & EM', 'icon': '🇹🇭', 'color': '#2d2a4a', 'sector': 'ETF'},
 }
 
+# Liste des symboles à utiliser dans l'interface
 WATCHLIST = list(ASSETS.keys())
 
 # ============================================================
-# CALCUL DES INDICATEURS TECHNIQUES (simplifié)
+# CALCUL DES INDICATEURS TECHNIQUES
 # ============================================================
 
 def calculate_sma(data, period):
@@ -489,7 +502,12 @@ def get_trading(symbol):
             return jsonify(cached)
         logger.info(f"Fetching {symbol}")
 
-        # Gestion des symboles alternatifs
+        # Si le symbole est un ancien symbole russe, rediriger vers EEM
+        russian_symbols = ['SBER.ME', 'GAZP.ME', 'LKOH.ME', 'ROSN.ME', 'GMKN.ME', 'MTSS.ME', 'NVTK.ME', 'RUAL.ME', 'AFLT.ME', 'YNDX.ME', 'MOEX.ME', 'SBER', 'GAZP', 'LKOH', 'ROSN', 'GMKN', 'MTSS', 'NVTK', 'RUAL', 'AFLT', 'YNDX', 'MOEX', 'RSX']
+        if symbol in russian_symbols:
+            logger.info(f"Redirection de {symbol} vers EEM (Marchés Emergents)")
+            symbol = 'EEM'
+
         ticker = yf.Ticker(symbol)
         hist_test = ticker.history(period='1d')
 
@@ -589,16 +607,16 @@ def get_insights(symbol):
         if cached:
             return jsonify(cached)
 
-        # Gestion des symboles alternatifs
+        # Redirection des symboles russes
+        russian_symbols = ['SBER.ME', 'GAZP.ME', 'LKOH.ME', 'ROSN.ME', 'GMKN.ME', 'MTSS.ME', 'NVTK.ME', 'RUAL.ME', 'AFLT.ME', 'YNDX.ME', 'MOEX.ME', 'SBER', 'GAZP', 'LKOH', 'ROSN', 'GMKN', 'MTSS', 'NVTK', 'RUAL', 'AFLT', 'YNDX', 'MOEX', 'RSX']
+        if symbol in russian_symbols:
+            symbol = 'EEM'
+
         ticker = yf.Ticker(symbol)
         hist = ticker.history(period='3mo')
 
-        if hist.empty and symbol.endswith('=F'):
-            alt_symbol = symbol.replace('=F', '')
-            ticker = yf.Ticker(alt_symbol)
-            hist = ticker.history(period='3mo')
-            if not hist.empty:
-                symbol = alt_symbol
+        if hist.empty:
+            return jsonify({'error': 'Pas assez de données'}), 404
 
         if hist.empty or len(hist) < 30:
             return jsonify({'error': 'Pas assez de données'}), 404
@@ -634,7 +652,10 @@ def get_insights(symbol):
 def get_watchlist():
     try:
         results = []
-        for symbol in WATCHLIST[:15]:
+        # Filtrer les symboles problématiques
+        problematic = ['SBER.ME', 'GAZP.ME', 'LKOH.ME', 'ROSN.ME', 'GMKN.ME', 'MTSS.ME', 'NVTK.ME', 'RUAL.ME', 'AFLT.ME', 'YNDX.ME', 'MOEX.ME', 'RSX']
+        working_symbols = [s for s in WATCHLIST if s not in problematic]
+        for symbol in working_symbols[:15]:
             try:
                 ticker = yf.Ticker(symbol)
                 info = ticker.info
@@ -678,7 +699,9 @@ def get_watchlist():
 def get_top_performers():
     try:
         performers = []
-        for symbol in WATCHLIST[:15]:
+        problematic = ['SBER.ME', 'GAZP.ME', 'LKOH.ME', 'ROSN.ME', 'GMKN.ME', 'MTSS.ME', 'NVTK.ME', 'RUAL.ME', 'AFLT.ME', 'YNDX.ME', 'MOEX.ME', 'RSX']
+        working_symbols = [s for s in WATCHLIST if s not in problematic]
+        for symbol in working_symbols[:15]:
             try:
                 ticker = yf.Ticker(symbol)
                 info = ticker.info
@@ -825,7 +848,7 @@ if __name__ == '__main__':
     print("=" * 70)
     print("📊 TRADING MONITOR - Indicateurs + IA + Fondamentales")
     print("=" * 70)
-    print("🌐 http://localhost:5000")
+    print("🌐 http://localhost:5001")
     print("=" * 70)
     print(f"📈 {len(WATCHLIST)} actifs disponibles")
     print("=" * 70)
@@ -839,5 +862,8 @@ if __name__ == '__main__':
     for cat, count in categories.items():
         print(f"   📂 {cat}: {count} actifs")
     print("=" * 70)
+    print("⚠️  Note: Les actions russes ne sont plus disponibles")
+    print("   → Redirection automatique vers EEM (Marchés Emergents)")
+    print("=" * 70)
 
-    socketio.run(app, host='0.0.0.0', port=5000, debug=True)
+    socketio.run(app, host='0.0.0.0', port=5001, debug=True)
