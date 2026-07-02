@@ -74,7 +74,7 @@ def safe_int(v, default=0):
         return default
 
 # ============================================================
-# DONNÉES PAR CATÉGORIE - SYMBOLES QUI FONCTIONNENT
+# DONNÉES PAR CATÉGORIE
 # ============================================================
 
 ASSETS = {
@@ -133,8 +133,7 @@ ASSETS = {
     'AWK': {'name': 'American Water Works', 'exchange': 'NYSE', 'category': 'Eau', 'icon': '💧', 'color': '#004d99', 'sector': 'Utilities'},
     'XYL': {'name': 'Xylem Inc.', 'exchange': 'NYSE', 'category': 'Eau', 'icon': '💧', 'color': '#0088cc', 'sector': 'Industrials'},
 
-    # ========== BRICS / MARCHES EMERGENTS (remplacement MOEX) ==========
-    # Tous ces symboles sont vérifiés et fonctionnent
+    # ========== BRICS / MARCHES EMERGENTS ==========
     'EEM': {'name': 'MSCI Emerging Markets', 'exchange': 'NYSE', 'category': 'BRICS & EM', 'icon': '🌍', 'color': '#00a859', 'sector': 'ETF'},
     'VWO': {'name': 'Vanguard Emerging Markets', 'exchange': 'NYSE', 'category': 'BRICS & EM', 'icon': '🌍', 'color': '#0047ab', 'sector': 'ETF'},
     'IEMG': {'name': 'iShares Core MSCI EM', 'exchange': 'NYSE', 'category': 'BRICS & EM', 'icon': '🌍', 'color': '#ff6b00', 'sector': 'ETF'},
@@ -145,9 +144,29 @@ ASSETS = {
     'EWW': {'name': 'Mexico', 'exchange': 'NYSE', 'category': 'BRICS & EM', 'icon': '🇲🇽', 'color': '#006341', 'sector': 'ETF'},
     'TUR': {'name': 'Turkey', 'exchange': 'NYSE', 'category': 'BRICS & EM', 'icon': '🇹🇷', 'color': '#e30a17', 'sector': 'ETF'},
     'THD': {'name': 'Thailand', 'exchange': 'NYSE', 'category': 'BRICS & EM', 'icon': '🇹🇭', 'color': '#2d2a4a', 'sector': 'ETF'},
+
+    # ========== FUNDS / ETFs ==========
+    'SPY': {'name': 'S&P 500 ETF', 'exchange': 'NYSE', 'category': 'FUNDS', 'icon': '📊', 'color': '#0050b0', 'sector': 'ETF'},
+    'QQQ': {'name': 'Nasdaq 100 ETF', 'exchange': 'NASDAQ', 'category': 'FUNDS', 'icon': '📈', 'color': '#0066cc', 'sector': 'ETF'},
+    'VTI': {'name': 'Total Stock Market', 'exchange': 'NYSE', 'category': 'FUNDS', 'icon': '🌎', 'color': '#0047ab', 'sector': 'ETF'},
+    'VOO': {'name': 'S&P 500 Vanguard', 'exchange': 'NYSE', 'category': 'FUNDS', 'icon': '📊', 'color': '#003399', 'sector': 'ETF'},
+    'IVV': {'name': 'S&P 500 iShares', 'exchange': 'NYSE', 'category': 'FUNDS', 'icon': '📊', 'color': '#00a859', 'sector': 'ETF'},
+    'BND': {'name': 'Total Bond Market', 'exchange': 'NASDAQ', 'category': 'FUNDS', 'icon': '🔵', 'color': '#2c6e8f', 'sector': 'ETF'},
+    'AGG': {'name': 'US Aggregate Bond', 'exchange': 'NYSE', 'category': 'FUNDS', 'icon': '🔵', 'color': '#3a7ca5', 'sector': 'ETF'},
+    'VGK': {'name': 'Europe ETF', 'exchange': 'NYSE', 'category': 'FUNDS', 'icon': '🇪🇺', 'color': '#002395', 'sector': 'ETF'},
+    'VPL': {'name': 'Pacific ETF', 'exchange': 'NYSE', 'category': 'FUNDS', 'icon': '🌏', 'color': '#0066b3', 'sector': 'ETF'},
+    'SCHD': {'name': 'Dividend ETF', 'exchange': 'NYSE', 'category': 'FUNDS', 'icon': '💰', 'color': '#006341', 'sector': 'ETF'},
+    'JEPI': {'name': 'Income ETF', 'exchange': 'NYSE', 'category': 'FUNDS', 'icon': '🏦', 'color': '#8B0000', 'sector': 'ETF'},
+    'GDX': {'name': 'Gold Miners ETF', 'exchange': 'NYSE', 'category': 'FUNDS', 'icon': '⛏️', 'color': '#ffd700', 'sector': 'ETF'},
+    'XLE': {'name': 'Energy ETF', 'exchange': 'NYSE', 'category': 'FUNDS', 'icon': '🛢️', 'color': '#ff6b00', 'sector': 'ETF'},
+    'XLF': {'name': 'Financial ETF', 'exchange': 'NYSE', 'category': 'FUNDS', 'icon': '🏛️', 'color': '#003399', 'sector': 'ETF'},
+    'XLK': {'name': 'Technology ETF', 'exchange': 'NYSE', 'category': 'FUNDS', 'icon': '💻', 'color': '#00a4ef', 'sector': 'ETF'},
+    'XLV': {'name': 'Healthcare ETF', 'exchange': 'NYSE', 'category': 'FUNDS', 'icon': '💊', 'color': '#005eb8', 'sector': 'ETF'},
+    'XLI': {'name': 'Industrials ETF', 'exchange': 'NYSE', 'category': 'FUNDS', 'icon': '🏗️', 'color': '#ff6600', 'sector': 'ETF'},
+    'XLP': {'name': 'Consumer Staples ETF', 'exchange': 'NYSE', 'category': 'FUNDS', 'icon': '🛒', 'color': '#4CAF50', 'sector': 'ETF'},
+    'XLY': {'name': 'Consumer Discretionary ETF', 'exchange': 'NYSE', 'category': 'FUNDS', 'icon': '🛍️', 'color': '#ff9800', 'sector': 'ETF'},
 }
 
-# Liste des symboles à utiliser dans l'interface
 WATCHLIST = list(ASSETS.keys())
 
 # ============================================================
@@ -502,16 +521,15 @@ def get_trading(symbol):
             return jsonify(cached)
         logger.info(f"Fetching {symbol}")
 
-        # Si le symbole est un ancien symbole russe, rediriger vers EEM
+        # Redirection des symboles russes
         russian_symbols = ['SBER.ME', 'GAZP.ME', 'LKOH.ME', 'ROSN.ME', 'GMKN.ME', 'MTSS.ME', 'NVTK.ME', 'RUAL.ME', 'AFLT.ME', 'YNDX.ME', 'MOEX.ME', 'SBER', 'GAZP', 'LKOH', 'ROSN', 'GMKN', 'MTSS', 'NVTK', 'RUAL', 'AFLT', 'YNDX', 'MOEX', 'RSX']
         if symbol in russian_symbols:
-            logger.info(f"Redirection de {symbol} vers EEM (Marchés Emergents)")
+            logger.info(f"Redirection de {symbol} vers EEM")
             symbol = 'EEM'
 
         ticker = yf.Ticker(symbol)
         hist_test = ticker.history(period='1d')
 
-        # Si le symbole avec =F ne fonctionne pas, essayer sans
         if hist_test.empty and symbol.endswith('=F'):
             alt_symbol = symbol.replace('=F', '')
             logger.info(f"Tentative avec {alt_symbol}")
@@ -607,16 +625,12 @@ def get_insights(symbol):
         if cached:
             return jsonify(cached)
 
-        # Redirection des symboles russes
         russian_symbols = ['SBER.ME', 'GAZP.ME', 'LKOH.ME', 'ROSN.ME', 'GMKN.ME', 'MTSS.ME', 'NVTK.ME', 'RUAL.ME', 'AFLT.ME', 'YNDX.ME', 'MOEX.ME', 'SBER', 'GAZP', 'LKOH', 'ROSN', 'GMKN', 'MTSS', 'NVTK', 'RUAL', 'AFLT', 'YNDX', 'MOEX', 'RSX']
         if symbol in russian_symbols:
             symbol = 'EEM'
 
         ticker = yf.Ticker(symbol)
         hist = ticker.history(period='3mo')
-
-        if hist.empty:
-            return jsonify({'error': 'Pas assez de données'}), 404
 
         if hist.empty or len(hist) < 30:
             return jsonify({'error': 'Pas assez de données'}), 404
@@ -652,7 +666,6 @@ def get_insights(symbol):
 def get_watchlist():
     try:
         results = []
-        # Filtrer les symboles problématiques
         problematic = ['SBER.ME', 'GAZP.ME', 'LKOH.ME', 'ROSN.ME', 'GMKN.ME', 'MTSS.ME', 'NVTK.ME', 'RUAL.ME', 'AFLT.ME', 'YNDX.ME', 'MOEX.ME', 'RSX']
         working_symbols = [s for s in WATCHLIST if s not in problematic]
         for symbol in working_symbols[:15]:

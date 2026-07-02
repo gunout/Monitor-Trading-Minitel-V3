@@ -471,14 +471,15 @@
 
         <!-- TABS -->
         <div class="tabs" id="tabs">
-    <button class="tab active" data-tab="commodities"><span class="icon">🛢️</span>Commodités</button>
-    <button class="tab" data-tab="crypto"><span class="icon">₿</span>Crypto</button>
-    <button class="tab" data-tab="forex"><span class="icon">💱</span>Forex</button>
-    <button class="tab" data-tab="usstocks"><span class="icon">🇺🇸</span>US Stocks</button>
-    <button class="tab" data-tab="paris"><span class="icon">🇫🇷</span>Paris</button>
-    <button class="tab" data-tab="water"><span class="icon">🌊</span>Eau</button>
-    <button class="tab" data-tab="brics"><span class="icon">🌍</span>BRICS & EM</button>
-</div>
+            <button class="tab active" data-tab="commodities"><span class="icon">🛢️</span>Commodités</button>
+            <button class="tab" data-tab="crypto"><span class="icon">₿</span>Crypto</button>
+            <button class="tab" data-tab="forex"><span class="icon">💱</span>Forex</button>
+            <button class="tab" data-tab="usstocks"><span class="icon">🇺🇸</span>US Stocks</button>
+            <button class="tab" data-tab="paris"><span class="icon">🇫🇷</span>Paris</button>
+            <button class="tab" data-tab="water"><span class="icon">🌊</span>Eau</button>
+            <button class="tab" data-tab="brics"><span class="icon">🌍</span>BRICS & EM</button>
+            <button class="tab" data-tab="funds"><span class="icon">📊</span>FUNDS</button>
+        </div>
 
         <!-- CONTENU DES TABS -->
         <div id="tab-contents">
@@ -501,8 +502,11 @@
                 <div class="main-grid" id="tab-grid-water"></div>
             </div>
             <div class="tab-content" id="tab-brics">
-    <div class="main-grid" id="tab-grid-brics"></div>
-</div>
+                <div class="main-grid" id="tab-grid-brics"></div>
+            </div>
+            <div class="tab-content" id="tab-funds">
+                <div class="main-grid" id="tab-grid-funds"></div>
+            </div>
         </div>
 
         <div class="footer">
@@ -553,34 +557,37 @@
         };
 
         var categorySymbols = {
-    'commodities': ['GLD', 'SLV', 'USO', 'BNO', 'UNG', 'CORN', 'WEAT', 'SOYB', 'CPER', 'DBC'],
-    'crypto': ['BTC-USD', 'ETH-USD', 'SOL-USD', 'ADA-USD', 'DOGE-USD', 'XRP-USD', 'BNB-USD'],
-    'forex': ['EURUSD=X', 'GBPUSD=X', 'USDJPY=X', 'USDCHF=X', 'AUDUSD=X', 'USDCAD=X'],
-    'usstocks': ['AAPL', 'MSFT', 'GOOGL', 'NVDA', 'TSLA', 'AMZN', 'META', 'JPM', '^GSPC'],
-    'paris': ['ML.PA', 'SAN.PA', 'BNP.PA', 'OR.PA', 'AI.PA', '^FCHI'],
-    'water': ['PHO', 'FIW', 'CGW', 'AWK', 'XYL'],
-    'brics': ['EEM', 'VWO', 'IEMG', 'FXI', 'EWZ', 'EZA', 'EPI', 'EWW', 'TUR', 'THD']
-};
+            'commodities': ['GLD', 'SLV', 'USO', 'BNO', 'UNG', 'CORN', 'WEAT', 'SOYB', 'CPER', 'DBC'],
+            'crypto': ['BTC-USD', 'ETH-USD', 'SOL-USD', 'ADA-USD', 'DOGE-USD', 'XRP-USD', 'BNB-USD'],
+            'forex': ['EURUSD=X', 'GBPUSD=X', 'USDJPY=X', 'USDCHF=X', 'AUDUSD=X', 'USDCAD=X'],
+            'usstocks': ['AAPL', 'MSFT', 'GOOGL', 'NVDA', 'TSLA', 'AMZN', 'META', 'JPM', '^GSPC'],
+            'paris': ['ML.PA', 'SAN.PA', 'BNP.PA', 'OR.PA', 'AI.PA', '^FCHI'],
+            'water': ['PHO', 'FIW', 'CGW', 'AWK', 'XYL'],
+            'brics': ['EEM', 'VWO', 'IEMG', 'FXI', 'EWZ', 'EZA', 'EPI', 'EWW', 'TUR', 'THD'],
+            'funds': ['SPY', 'QQQ', 'VTI', 'VOO', 'IVV', 'BND', 'AGG', 'VGK', 'VPL', 'SCHD', 'JEPI', 'GDX', 'XLE', 'XLF', 'XLK', 'XLV', 'XLI', 'XLP', 'XLY']
+        };
 
-var defaultSymbols = {
-    'commodities': 'GLD',
-    'crypto': 'BTC-USD',
-    'forex': 'EURUSD=X',
-    'usstocks': 'AAPL',
-    'paris': 'ML.PA',
-    'water': 'PHO',
-    'brics': 'EEM'
-};
+        var defaultSymbols = {
+            'commodities': 'GLD',
+            'crypto': 'BTC-USD',
+            'forex': 'EURUSD=X',
+            'usstocks': 'AAPL',
+            'paris': 'ML.PA',
+            'water': 'PHO',
+            'brics': 'EEM',
+            'funds': 'SPY'
+        };
 
-var categoryNames = {
-    'commodities': 'Commodités',
-    'crypto': 'Crypto',
-    'forex': 'Forex',
-    'usstocks': 'US Stocks',
-    'paris': 'Paris',
-    'water': 'Eau',
-    'brics': '🌍 BRICS & EM'
-};
+        var categoryNames = {
+            'commodities': 'Commodités',
+            'crypto': 'Crypto',
+            'forex': 'Forex',
+            'usstocks': 'US Stocks',
+            'paris': 'Paris',
+            'water': 'Eau',
+            'brics': '🌍 BRICS & EM',
+            'funds': '📊 FUNDS & ETFs'
+        };
 
         // ================================================================
         // CHARGEMENT DES PRÉFÉRENCES
@@ -1095,17 +1102,35 @@ var categoryNames = {
                 else if (sym === 'MSFT') label = '💻 MSFT';
                 else if (sym === 'ML.PA') label = '👔 LVMH';
                 else if (sym === 'PHO') label = '🌊 PHO';
-                else if (sym === 'SBER.ME') label = '🏦 Sberbank';
-                else if (sym === 'GAZP.ME') label = '⛽ Gazprom';
-                else if (sym === 'LKOH.ME') label = '🛢️ Lukoil';
-                else if (sym === 'ROSN.ME') label = '🛢️ Rosneft';
-                else if (sym === 'GMKN.ME') label = '⛏️ Norilsk';
-                else if (sym === 'MTSS.ME') label = '📱 MTS';
-                else if (sym === 'NVTK.ME') label = '🔥 Novatek';
-                else if (sym === 'RUAL.ME') label = '🏗️ Rusal';
-                else if (sym === 'AFLT.ME') label = '✈️ Aeroflot';
-                else if (sym === 'YNDX.ME') label = '🔍 Yandex';
-                else if (sym === 'MOEX.ME') label = '📊 MOEX';
+                // BRICS
+                else if (sym === 'EEM') label = '🌍 EM MSCI';
+                else if (sym === 'VWO') label = '🌍 Vanguard EM';
+                else if (sym === 'FXI') label = '🇨🇳 China';
+                else if (sym === 'EWZ') label = '🇧🇷 Brazil';
+                else if (sym === 'EPI') label = '🇮🇳 India';
+                else if (sym === 'EWW') label = '🇲🇽 Mexico';
+                else if (sym === 'TUR') label = '🇹🇷 Turkey';
+                else if (sym === 'THD') label = '🇹🇭 Thailand';
+                // FUNDS
+                else if (sym === 'SPY') label = '📊 S&P 500';
+                else if (sym === 'QQQ') label = '📈 Nasdaq';
+                else if (sym === 'VTI') label = '🌎 Total Market';
+                else if (sym === 'VOO') label = '📊 S&P Vanguard';
+                else if (sym === 'IVV') label = '📊 S&P iShares';
+                else if (sym === 'BND') label = '🔵 Bonds';
+                else if (sym === 'AGG') label = '🔵 Aggregate';
+                else if (sym === 'VGK') label = '🇪🇺 Europe';
+                else if (sym === 'VPL') label = '🌏 Pacific';
+                else if (sym === 'SCHD') label = '💰 Dividends';
+                else if (sym === 'JEPI') label = '🏦 Income';
+                else if (sym === 'GDX') label = '⛏️ Gold Miners';
+                else if (sym === 'XLE') label = '🛢️ Energy';
+                else if (sym === 'XLF') label = '🏛️ Financial';
+                else if (sym === 'XLK') label = '💻 Tech';
+                else if (sym === 'XLV') label = '💊 Healthcare';
+                else if (sym === 'XLI') label = '🏗️ Industrials';
+                else if (sym === 'XLP') label = '🛒 Consumer';
+                else if (sym === 'XLY') label = '🛍️ Discretionary';
                 else label = sym.replace('-USD', '').replace('.PA', '').replace('=X', '').replace('.ME', '');
                 html += '<button class="btn btn-sm" onclick="quickSelect(\'' + sym + '\')">' + label + '</button>';
                 count++;
