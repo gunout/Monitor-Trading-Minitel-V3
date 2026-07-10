@@ -49,9 +49,13 @@ ___________________________________________________________________ .
 
     source mon/bin/activate
 
-# INSTALL REQUIREMENTS
+# INSTALL REQUIREMENTS for Linux and Windows 64 Bits 
 
     pip install -r requirements.txt
+
+# INSTALL REQUIREMENTS for Windows 32 Bits 
+
+    pip install -r requirementsWindows32.txt
 
 # RUN MONITOR TRADER ON LOCALHOST:5000
 
