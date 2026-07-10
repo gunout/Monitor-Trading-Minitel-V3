@@ -45,9 +45,13 @@ ___________________________________________________________________ .
 
     python -m venv mon
 
-# ACTIVATE VENV 
+# ACTIVATE VENV for Linux 
 
     source mon/bin/activate
+
+# ACTIVATE VENV for Windows 32 and 64 .
+
+    mon\Scripts\Activate.bat
 
 # INSTALL REQUIREMENTS for Linux and Windows 64 Bits 
 
