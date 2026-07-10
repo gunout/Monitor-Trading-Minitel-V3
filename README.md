@@ -55,7 +55,7 @@ ___________________________________________________________________ .
 
 # INSTALL REQUIREMENTS for Windows 32 Bits 
 
-    pip install -r requirementsWindows32.txt
+    pip install -r requirementsWindows32Bits.txt
 
 # RUN MONITOR TRADER ON LOCALHOST:5000
 
