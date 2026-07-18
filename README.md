@@ -57,7 +57,8 @@ ___________________________________________________________________ .
 
     pip install -r requirements.txt
 
-# INSTALL REQUIREMENTS for Windows 32 Bits ⚠️ with PYTHON 3.8 ⚠️
+# INSTALL REQUIREMENTS for Windows 32 Bits 
+⚠️ with PYTHON 3.8 ⚠️
 
     pip install -r requirementsWindows32Bits.txt
 
