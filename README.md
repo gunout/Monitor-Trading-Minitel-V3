@@ -58,11 +58,15 @@ ___________________________________________________________________ .
     pip install -r requirements.txt
 
 # INSTALL REQUIREMENTS for Windows 32 Bits 
-⚠️ with PYTHON 3.8 ⚠️
+⚠️ with PYTHON 3.8 ⚠️ avoir yfinance_patch.py 
 
     pip install -r requirementsWindows32Bits.txt
 
-# RUN MONITOR TRADER ON LOCALHOST:5000
+# RUN MONITOR TRADER FOR WIN 32 Bits .
+
+   python serv32.py
+
+# RUN MONITOR TRADER ON LOCALHOST:5001
 
     python serv.py
 
