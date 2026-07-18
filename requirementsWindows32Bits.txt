@@ -4,7 +4,7 @@ scikit-learn==0.24.2
 flask==2.3.3
 flask-cors==4.0.0
 flask-socketio==5.3.4
-yfinance==0.1.70
+yfinance==0.2.33
 pytz==2023.3
 python-socketio==5.9.0
 eventlet==0.33.3
